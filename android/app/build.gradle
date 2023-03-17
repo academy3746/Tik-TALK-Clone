@@ -60,6 +60,7 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+    namespace 'kr.jonghyun.tictok_clone'
 }
 
 flutter {
