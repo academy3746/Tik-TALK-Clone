@@ -7,8 +7,8 @@ import 'package:tictok_clone/features/auth/common/auth_button.dart';
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
-  void onSignUpTap(BuildContext context) {
-    // Avoid Push Material to avoid infinite goBack...
+  void _onSignUpTap(BuildContext context) {
+    // Avoid Push Material to prevent infinite goBack...
     Navigator.of(context).pop(); // Remove current Stack
   }
 
@@ -58,7 +58,7 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.grey.shade100,
+        color: Colors.grey.shade50,
         elevation: 2,
         child: Padding(
           padding: const EdgeInsets.symmetric(
@@ -75,7 +75,7 @@ class LoginScreen extends StatelessWidget {
               ),
               Gaps.h12,
               GestureDetector(
-                onTap: () => onSignUpTap(context),
+                onTap: () => _onSignUpTap(context),
                 child: Text(
                   "회원가입",
                   style: TextStyle(

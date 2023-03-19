@@ -3,15 +3,26 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tictok_clone/constants/gaps.dart';
 import 'package:tictok_clone/constants/sizes.dart';
 import 'package:tictok_clone/features/auth/common/auth_button.dart';
+import 'package:tictok_clone/features/auth/email_screen.dart';
 import 'package:tictok_clone/features/auth/login_screen.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({Key? key}) : super(key: key);
 
-  void onLoginTap(BuildContext context) {
+  // 메서드명에 언더바를 붙여주는 것은 Java Language에서 Private을 선언하는 것과 같음
+
+  void _onLoginTap(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => const LoginScreen(),
+      ),
+    );
+  }
+
+  void _onEmailTap(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const EmailScreen(),
       ),
     );
   }
@@ -25,9 +36,9 @@ class SignUpScreen extends StatelessWidget {
             horizontal: Sizes.size40,
           ),
           child: Column(
-            children: const [
+            children: [
               Gaps.v80,
-              Text(
+              const Text(
                 "TikTok 회원가입",
                 style: TextStyle(
                   fontSize: Sizes.size24,
@@ -35,7 +46,7 @@ class SignUpScreen extends StatelessWidget {
                 ),
               ),
               Gaps.v20,
-              Text(
+              const Text(
                 "크리에이터님! 세상을 놀라게 할 준비가 되셨나요?",
                 style: TextStyle(
                   fontSize: Sizes.size14,
@@ -44,14 +55,17 @@ class SignUpScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               Gaps.v40,
-              AuthButton(
-                icon: FaIcon(
-                  FontAwesomeIcons.user,
+              GestureDetector(
+                onTap: () => _onEmailTap(context),
+                child: const AuthButton(
+                  icon: FaIcon(
+                    FontAwesomeIcons.user,
+                  ),
+                  text: "이메일로 가입하기",
                 ),
-                text: "이메일로 가입하기",
               ),
               Gaps.v16,
-              AuthButton(
+              const AuthButton(
                 icon: FaIcon(
                   FontAwesomeIcons.apple,
                 ),
@@ -62,7 +76,7 @@ class SignUpScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.grey.shade100,
+        color: Colors.grey.shade50,
         elevation: 2,
         child: Padding(
           padding: const EdgeInsets.symmetric(
@@ -79,7 +93,7 @@ class SignUpScreen extends StatelessWidget {
               ),
               Gaps.h12,
               GestureDetector(
-                onTap: () => onLoginTap(context),
+                onTap: () => _onLoginTap(context),
                 child: Text(
                   "로그인",
                   style: TextStyle(
