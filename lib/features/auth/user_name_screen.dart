@@ -45,61 +45,68 @@ class _UserNameScreenState extends State<UserNameScreen> {
     );
   }
 
+  void _onScaffoldTap() {
+    FocusScope.of(context).unfocus();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "개인정보 입력",
+    return GestureDetector(
+      onTap: _onScaffoldTap,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            "직접 입력",
+          ),
         ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: Sizes.size36),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Gaps.v40,
-            const Text(
-              "회원명",
-              style: TextStyle(
-                fontSize: Sizes.size24,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-            Gaps.v8,
-            const Text(
-              "회원명은 언제든 변경할 수 있어요.",
-              style: TextStyle(
-                color: Colors.black54,
-                fontSize: Sizes.size16,
-              ),
-            ),
-            Gaps.v16,
-            TextField(
-              controller: _userNameController,
-              decoration: InputDecoration(
-                hintText: "익명, 실명 모두 입력 가능",
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.grey.shade400,
-                  ),
-                ),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.grey.shade400,
-                  ),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: Sizes.size36),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Gaps.v40,
+              const Text(
+                "회원명",
+                style: TextStyle(
+                  fontSize: Sizes.size24,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
-              cursorColor: Theme.of(context).primaryColor,
-            ),
-            Gaps.v28,
-            GestureDetector(
-              onTap: _onNextTap,
-              child: FormButton(
-                disabled: _userName.isEmpty,
+              Gaps.v8,
+              const Text(
+                "회원명은 언제든 변경할 수 있어요.",
+                style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: Sizes.size16,
+                ),
               ),
-            ),
-          ],
+              Gaps.v16,
+              TextField(
+                controller: _userNameController,
+                decoration: InputDecoration(
+                  hintText: "익명, 실명 모두 입력 가능",
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.grey.shade400,
+                    ),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.grey.shade400,
+                    ),
+                  ),
+                ),
+                cursorColor: Theme.of(context).primaryColor,
+              ),
+              Gaps.v28,
+              GestureDetector(
+                onTap: _onNextTap,
+                child: FormButton(
+                  disabled: _userName.isEmpty,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
