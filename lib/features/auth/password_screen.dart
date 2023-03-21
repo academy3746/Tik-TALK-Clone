@@ -120,7 +120,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
                       ),
                     ],
                   ),
-                  hintText: "강력한 비밀번호 사용 권장",
+                  hintText: "비밀번호를 강력하게 보완하세요.",
                   enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(
                       color: Colors.grey.shade400,

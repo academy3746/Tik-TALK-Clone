@@ -44,14 +44,14 @@ class LoginScreen extends StatelessWidget {
                 icon: FaIcon(
                   FontAwesomeIcons.user,
                 ),
-                text: "이메일로 가입하기",
+                text: "이메일 & 비밀번호 로그인",
               ),
               Gaps.v16,
               AuthButton(
                 icon: FaIcon(
                   FontAwesomeIcons.apple,
                 ),
-                text: "Sign in with Apple",
+                text: "Continue with Apple",
               ),
             ],
           ),
