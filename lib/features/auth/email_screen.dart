@@ -92,7 +92,7 @@ class _EmailScreenState extends State<EmailScreen> {
                 onEditingComplete: _onSubmit,
                 controller: _emailController,
                 decoration: InputDecoration(
-                  hintText: "ex) email@email.com",
+                  hintText: "이메일주소",
                   errorText: _isEmailValid(),
                   enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(

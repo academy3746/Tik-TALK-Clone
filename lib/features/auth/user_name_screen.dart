@@ -84,7 +84,7 @@ class _UserNameScreenState extends State<UserNameScreen> {
               TextField(
                 controller: _userNameController,
                 decoration: InputDecoration(
-                  hintText: "익명, 실명 모두 입력 가능",
+                  hintText: "회원명 (익명, 실명 모두 가능)",
                   enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(
                       color: Colors.grey.shade400,
