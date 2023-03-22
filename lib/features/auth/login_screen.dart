@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tictok_clone/constants/gaps.dart';
 import 'package:tictok_clone/constants/sizes.dart';
 import 'package:tictok_clone/features/auth/common/auth_button.dart';
+import 'package:tictok_clone/features/auth/login_form_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -10,6 +11,14 @@ class LoginScreen extends StatelessWidget {
   void _onSignUpTap(BuildContext context) {
     // Avoid Push Material to prevent infinite goBack...
     Navigator.of(context).pop(); // Remove current Stack
+  }
+
+  void _onEmailLoginTap(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const LoginFormScreen(),
+      ),
+    );
   }
 
   @override
@@ -21,9 +30,9 @@ class LoginScreen extends StatelessWidget {
             horizontal: Sizes.size40,
           ),
           child: Column(
-            children: const [
+            children: [
               Gaps.v80,
-              Text(
+              const Text(
                 "TikTok 로그인",
                 style: TextStyle(
                   fontSize: Sizes.size24,
@@ -31,7 +40,7 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               Gaps.v20,
-              Text(
+              const Text(
                 "컨텐츠를 관리하기 위해서는 로그인을 해주셔야 해요.",
                 style: TextStyle(
                   fontSize: Sizes.size14,
@@ -40,14 +49,17 @@ class LoginScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               Gaps.v40,
-              AuthButton(
-                icon: FaIcon(
-                  FontAwesomeIcons.user,
+              GestureDetector(
+                onTap: () => _onEmailLoginTap(context),
+                child: const AuthButton(
+                  icon: FaIcon(
+                    FontAwesomeIcons.user,
+                  ),
+                  text: "계정 로그인",
                 ),
-                text: "이메일 & 비밀번호 로그인",
               ),
               Gaps.v16,
-              AuthButton(
+              const AuthButton(
                 icon: FaIcon(
                   FontAwesomeIcons.apple,
                 ),
