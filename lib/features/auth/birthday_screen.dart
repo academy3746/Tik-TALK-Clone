@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:tictok_clone/constants/gaps.dart';
 import 'package:tictok_clone/constants/sizes.dart';
 import 'package:tictok_clone/features/auth/common/form_button.dart';
-import 'package:tictok_clone/features/auth/email_screen.dart';
 import 'package:tictok_clone/features/onboarding/interests_screen.dart';
 
 class BirthdayScreen extends StatefulWidget {
