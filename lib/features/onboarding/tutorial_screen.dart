@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tictok_clone/constants/gaps.dart';
 import 'package:tictok_clone/constants/sizes.dart';
+import 'package:tictok_clone/features/main_navigation/main_navigation_screen.dart';
 
 enum Direction {
   right,
@@ -46,6 +47,15 @@ class _TutorialScreenState extends State<TutorialScreen> {
         _jimmyPage = Page.first;
       });
     }
+  }
+
+  void _onEnterAppTap() {
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(
+        builder: (context) => const MainNavigationScreen(),
+      ),
+      (route) => false,
+    );
   }
 
   @override
@@ -120,7 +130,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
               ),
               child: CupertinoButton(
                 color: Theme.of(context).primaryColor,
-                onPressed: () {},
+                onPressed: _onEnterAppTap,
                 child: const Text(
                   "시작해봅시다!",
                   style: TextStyle(
