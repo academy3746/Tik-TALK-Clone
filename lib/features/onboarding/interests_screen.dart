@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tictok_clone/constants/gaps.dart';
 import 'package:tictok_clone/constants/sizes.dart';
+import 'package:tictok_clone/features/onboarding/tutorial_screen.dart';
 import 'package:tictok_clone/features/onboarding/widgets/interest_button.dart';
 
 const interests = [
@@ -55,6 +56,15 @@ class _InterestsScreenState extends State<InterestsScreen> {
         _showTitle = false;
       });
     }
+  }
+
+  void _onNextTap() {
+    Navigator.push( // Stateful 위젯에서는 of(context)를 인자로 받을 필요가 없다.
+      context,
+      MaterialPageRoute(
+        builder: (context) => const TutorialScreen(),
+      ),
+    );
   }
 
   @override
@@ -134,32 +144,23 @@ class _InterestsScreenState extends State<InterestsScreen> {
             left: Sizes.size24,
             right: Sizes.size24,
           ),
-          /*
-          child: Container(
-            padding: const EdgeInsets.symmetric(
-              vertical: Sizes.size20,
-            ),
-            decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
-              borderRadius: BorderRadius.circular(Sizes.size8),
-            ),
-            child: const Text(
-              "다음으로",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: Sizes.size16,
-                color: Colors.white,
+          child: GestureDetector(
+            onTap: _onNextTap,
+            child: Container(
+              padding: const EdgeInsets.symmetric(
+                vertical: Sizes.size20,
               ),
-            ),
-          )
-          */
-          child: CupertinoButton(
-            color: Theme.of(context).primaryColor,
-            onPressed: () {},
-            child: const Text(
-              "다음으로",
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
+              decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor,
+                borderRadius: BorderRadius.circular(Sizes.size8),
+              ),
+              child: const Text(
+                "다음으로",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: Sizes.size16,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),
@@ -168,5 +169,3 @@ class _InterestsScreenState extends State<InterestsScreen> {
     );
   }
 }
-
-
