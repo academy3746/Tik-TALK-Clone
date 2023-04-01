@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tictok_clone/constants/gaps.dart';
 import 'package:tictok_clone/constants/sizes.dart';
 import 'package:tictok_clone/features/videos/widgets/video_button.dart';
+import 'package:tictok_clone/features/videos/widgets/video_comment.dart';
 import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
@@ -24,7 +25,7 @@ class VideoPost extends StatefulWidget {
 class _VideoPostState extends State<VideoPost>
     with SingleTickerProviderStateMixin {
   final VideoPlayerController _videoPlayerController =
-      VideoPlayerController.asset("assets/videos/video02.mp4");
+      VideoPlayerController.asset("assets/videos/video03.mp4");
 
   final Duration _animationDuration = const Duration(milliseconds: 200);
 
@@ -81,7 +82,10 @@ class _VideoPostState extends State<VideoPost>
           "Video: #${widget.index} is ${info.visibleFraction * 100}% visible.");
     }
 
-    if (info.visibleFraction == 1 && !_videoPlayerController.value.isPlaying) {
+    // Page Refresh: onPlay -> Play / onPaused -> Pause
+    if (info.visibleFraction == 1 &&
+        !_isPaused &&
+        !_videoPlayerController.value.isPlaying) {
       _videoPlayerController.play();
     }
   }
@@ -97,6 +101,20 @@ class _VideoPostState extends State<VideoPost>
     setState(() {
       _isPaused = !_isPaused;
     });
+  }
+
+  void _onCommentTap(BuildContext context) async {
+    // 댓글창이 열렸을 경우에는 비디오 일시정지...
+    if (_videoPlayerController.value.isPlaying) {
+      _onTogglePause();
+    }
+    // Need not to import anything...
+    await showModalBottomSheet(
+      context: context,
+      builder: (context) => const VideoComments(),
+    );
+    // 댓글창을 닫으면 비디오 다시 재생...
+    _onTogglePause();
   }
 
   @override
@@ -172,8 +190,8 @@ class _VideoPostState extends State<VideoPost>
             bottom: 20,
             right: 10,
             child: Column(
-              children: const [
-                CircleAvatar(
+              children: [
+                const CircleAvatar(
                   radius: 25,
                   foregroundColor: Colors.white,
                   backgroundColor: Colors.black,
@@ -183,17 +201,20 @@ class _VideoPostState extends State<VideoPost>
                   child: Text("마따크"),
                 ),
                 Gaps.v24,
-                VideoButton(
+                const VideoButton(
                   icon: FontAwesomeIcons.solidHeart,
                   text: "2.9M",
                 ),
                 Gaps.v24,
-                VideoButton(
-                  icon: FontAwesomeIcons.solidComment,
-                  text: "33K",
+                GestureDetector(
+                  onTap: () => _onCommentTap(context),
+                  child: const VideoButton(
+                    icon: FontAwesomeIcons.solidComment,
+                    text: "33K",
+                  ),
                 ),
                 Gaps.v24,
-                VideoButton(
+                const VideoButton(
                   icon: FontAwesomeIcons.share,
                   text: "공유하기",
                 ),
