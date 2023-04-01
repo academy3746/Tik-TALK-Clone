@@ -110,6 +110,7 @@ class _VideoPostState extends State<VideoPost>
     }
     // Need not to import anything...
     await showModalBottomSheet(
+      backgroundColor: Colors.transparent,
       context: context,
       builder: (context) => const VideoComments(),
     );
