@@ -25,7 +25,7 @@ class VideoPost extends StatefulWidget {
 class _VideoPostState extends State<VideoPost>
     with SingleTickerProviderStateMixin {
   final VideoPlayerController _videoPlayerController =
-      VideoPlayerController.asset("assets/videos/video03.mp4");
+      VideoPlayerController.asset("assets/videos/video02.mp4");
 
   final Duration _animationDuration = const Duration(milliseconds: 200);
 
@@ -111,6 +111,8 @@ class _VideoPostState extends State<VideoPost>
     // Need not to import anything...
     await showModalBottomSheet(
       backgroundColor: Colors.transparent,
+      // BottomSheet의 크기를 변경할 수 있게 해줌...
+      isScrollControlled: true,
       context: context,
       builder: (context) => const VideoComments(),
     );
