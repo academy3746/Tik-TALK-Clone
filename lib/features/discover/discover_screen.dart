@@ -118,7 +118,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                           fit: BoxFit.cover,
                           placeholder: "assets/images/image006.jpeg",
                           image:
-                              "https://ac-p1.namu.la/20230405sac/253138772b0da787c9985d2858fca4ac43cb2779dc85564fc5b8a1367dcd5528.png?expires=1680707092&key=iEhIt3GL5GC1GRHDvAf_jA&type=orig",
+                          "https://ac-p1.namu.la/20230405sac/253138772b0da787c9985d2858fca4ac43cb2779dc85564fc5b8a1367dcd5528.png?expires=1680711009&key=qqjT6jG_XgDi18D89uDZNQ&type=orig",
                         ),
                       ),
                     ),
