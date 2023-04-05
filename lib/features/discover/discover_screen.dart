@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:tictok_clone/constants/sizes.dart';
 
 final tabs = [
-  "Timeline",
-  "Users",
-  "Videos",
-  "Music",
+  "타임라인",
+  "사용자",
+  "비디오",
+  "음악",
   "LIVE",
-  "Shopping",
-  "Brand",
+  "쇼핑",
+  "브랜드",
 ];
 
 class DiscoverScreen extends StatelessWidget {
@@ -45,7 +45,25 @@ class DiscoverScreen extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            for (var tab in tabs)
+            GridView.builder(
+              padding: const EdgeInsets.all(
+                Sizes.size6,
+              ),
+              itemCount: 20,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: Sizes.size10,
+                mainAxisSpacing: Sizes.size10,
+                childAspectRatio: 9 / 16,
+              ),
+              itemBuilder: (BuildContext context, int index) => Container(
+                color: Colors.amber,
+                child: Center(
+                  child: Text("$index"),
+                ),
+              ),
+            ),
+            for (var tab in tabs.skip(1))
               Center(
                 child: Text(
                   tab,
