@@ -22,7 +22,7 @@ class DiscoverScreen extends StatefulWidget {
 }
 
 class _DiscoverScreenState extends State<DiscoverScreen> {
-  final TextEditingController _textEditingController = TextEditingController(text: "이곳에 입력하세요.");
+  final TextEditingController _textEditingController = TextEditingController();
   bool _isWriting = false;
 
   void _onSearchChanged(String value) {
@@ -118,13 +118,13 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                           fit: BoxFit.cover,
                           placeholder: "assets/images/image006.jpeg",
                           image:
-                          "https://ac-p1.namu.la/20230405sac/253138772b0da787c9985d2858fca4ac43cb2779dc85564fc5b8a1367dcd5528.png?expires=1680711009&key=qqjT6jG_XgDi18D89uDZNQ&type=orig",
+                          "https://ac-p1.namu.la/20230406sac/0b10d7a3b047d19338ffa096d9aa5f88ec47da371678b712c25e1a076f9e2003.png?expires=1680792240&key=NahMU8l8p0F4yA-fdvSqfg&type=orig",
                         ),
                       ),
                     ),
                     Gaps.v10,
                     const Text(
-                      "You mother fucking betrayer must have to die before you go to hell...",
+                      "I was born to love you with every single day of my life.",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: Sizes.size16 + Sizes.size2,
