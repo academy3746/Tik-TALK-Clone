@@ -2,12 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tictok_clone/constants/sizes.dart';
 import 'package:tictok_clone/features/inbox/activity_screen.dart';
+import 'package:tictok_clone/features/inbox/chats_screen.dart';
 
 class InboxScreen extends StatelessWidget {
   const InboxScreen({Key? key}) : super(key: key);
 
   // Send DM to Specified Users
-  void _onMsgPressed() {}
+  void _onMsgPressed(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const ChatsScreen(),
+      ),
+    );
+  }
 
   void _onActivityTap(BuildContext context) {
     Navigator.of(context).push(
@@ -25,7 +32,7 @@ class InboxScreen extends StatelessWidget {
         title: const Text("메일함"),
         actions: [
           IconButton(
-            onPressed: _onMsgPressed,
+            onPressed: () => _onMsgPressed(context),
             icon: const FaIcon(FontAwesomeIcons.paperPlane),
           ),
         ],
