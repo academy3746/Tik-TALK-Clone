@@ -17,6 +17,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
           floating: true,
           stretch: true,
           pinned: true,
+          snap: true,
           backgroundColor: Theme.of(context).primaryColor,
           collapsedHeight: 80,
           expandedHeight: 200,
@@ -27,10 +28,24 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
             ],
             title: const Text("We Rock!"),
             background: Image.asset(
-              "assets/images/image007.jpeg",
+              "assets/images/image009.jpeg",
               fit: BoxFit.cover,
             ),
           ),
+        ),
+        SliverFixedExtentList(
+          delegate: SliverChildBuilderDelegate(
+            // Generate Item List Automatically
+            childCount: 20,
+            (context, index) => Container(
+              color: Colors.blue[100 * (index % 9)],
+              child: Align(
+                alignment: Alignment.center,
+                child: Text("Item $index"),
+              ),
+            ),
+          ),
+          itemExtent: 100, // height of items
         ),
       ],
     );
