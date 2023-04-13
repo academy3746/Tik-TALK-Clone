@@ -17,7 +17,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         SliverAppBar(
           //floating: true,
           stretch: true,
-          pinned: true,
+          //pinned: true,
           // snap: true,
           backgroundColor: Theme.of(context).primaryColor,
           collapsedHeight: 80,
@@ -34,6 +34,16 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
             ),
           ),
         ),
+        SliverToBoxAdapter(
+          child: Column(
+            children: const [
+              CircleAvatar(
+                backgroundColor: Colors.redAccent,
+                radius: 20,
+              ),
+            ],
+          ),
+        ),
         SliverFixedExtentList(
           delegate: SliverChildBuilderDelegate(
             // Generate Item List Automatically
@@ -47,6 +57,11 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
             ),
           ),
           itemExtent: 100, // height of items
+        ),
+        SliverPersistentHeader(
+          pinned: true,
+          floating: true,
+          delegate: CustomDelegate(),
         ),
         SliverGrid(
           delegate: SliverChildBuilderDelegate(
@@ -68,5 +83,32 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         ),
       ],
     );
+  }
+}
+
+class CustomDelegate extends SliverPersistentHeaderDelegate {
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return Container(
+      color: Colors.indigo,
+      child: const FractionallySizedBox(
+        heightFactor: 1,
+        child: Center(
+          child: Text("Rainbow in the dark!", style: TextStyle(color: Colors.white),),
+        ),
+      ),
+    );
+  }
+
+  @override
+  double get maxExtent => 150;
+
+  @override
+  double get minExtent => 80;
+
+  @override
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
+    return false;
   }
 }
