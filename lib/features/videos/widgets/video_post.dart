@@ -76,13 +76,8 @@ class _VideoPostState extends State<VideoPost>
   }
 
   void _onVisibilityChanged(VisibilityInfo info) {
-    // Debugging Area
-    if (kDebugMode) {
-      print(
-          "Video: #${widget.index} is ${info.visibleFraction * 100}% visible.");
-    }
-
     // Page Refresh: onPlay -> Play / onPaused -> Pause
+    if (!mounted) return;
     if (info.visibleFraction == 1 &&
         !_isPaused &&
         !_videoPlayerController.value.isPlaying) {
