@@ -30,6 +30,13 @@ class TikTokApp extends StatelessWidget {
       // Dark Mode in IOS Simulator: Shift + Command + a
       theme: ThemeData(
         brightness: Brightness.light,
+        textTheme: const TextTheme(
+          headlineLarge: TextStyle(
+            fontSize: Sizes.size24,
+            fontWeight: FontWeight.w700,
+            color: Colors.black,
+          ),
+        ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
         primaryColor: const Color(0xFFE9435A),
         scaffoldBackgroundColor: Colors.white,
