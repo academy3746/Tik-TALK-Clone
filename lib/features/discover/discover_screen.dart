@@ -96,7 +96,8 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
           body: TabBarView(
             children: [
               GridView.builder(
-                keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+                keyboardDismissBehavior:
+                    ScrollViewKeyboardDismissBehavior.onDrag,
                 padding: const EdgeInsets.all(
                   Sizes.size6,
                 ),
@@ -107,70 +108,74 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                   mainAxisSpacing: Sizes.size10,
                   childAspectRatio: 9 / 20,
                 ),
-                itemBuilder: (BuildContext context, int index) => Column(
-                  children: [
-                    Container(
-                      clipBehavior: Clip.hardEdge,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                          Sizes.size4,
+                itemBuilder: (BuildContext context, int index) => LayoutBuilder(
+                  builder: (context, constraints) => Column(
+                    children: [
+                      Container(
+                        clipBehavior: Clip.hardEdge,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                            Sizes.size4,
+                          ),
+                        ),
+                        child: AspectRatio(
+                          aspectRatio: 9 / 16,
+                          child: FadeInImage.assetNetwork(
+                            fit: BoxFit.cover,
+                            placeholder: "assets/images/image006.jpeg",
+                            image:
+                                "https://mblogthumb-phinf.pstatic.net/MjAyMzAzMDFfMTM4/MDAxNjc3Njc1MzU4Mzc0.6Kr59Z0filSUAX4hcXLtcHn3s1RWVU4tYfu_kKugC1Qg._KXcupmTPC5bUynEtgRFyvA5DJUvV5XRF1zqtb6Ewgsg.PNG.970612/00003-3815824812.png?type=w800",
+                          ),
                         ),
                       ),
-                      child: AspectRatio(
-                        aspectRatio: 9 / 16,
-                        child: FadeInImage.assetNetwork(
-                          fit: BoxFit.cover,
-                          placeholder: "assets/images/image006.jpeg",
-                          image:
-                          "https://mblogthumb-phinf.pstatic.net/MjAyMzAzMDFfMTM4/MDAxNjc3Njc1MzU4Mzc0.6Kr59Z0filSUAX4hcXLtcHn3s1RWVU4tYfu_kKugC1Qg._KXcupmTPC5bUynEtgRFyvA5DJUvV5XRF1zqtb6Ewgsg.PNG.970612/00003-3815824812.png?type=w800",
+                      Gaps.v10,
+                      Text(
+                        "${constraints.maxWidth} / I was born to love you with every single day of my life.",
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: Sizes.size16 + Sizes.size2,
                         ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                    ),
-                    Gaps.v10,
-                    const Text(
-                      "I was born to love you with every single day of my life.",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: Sizes.size16 + Sizes.size2,
-                      ),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    Gaps.v8,
-                    DefaultTextStyle(
-                      style: TextStyle(
-                        color: Colors.grey.shade600,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      child: Row(
-                        children: [
-                          const CircleAvatar(
-                            backgroundImage: NetworkImage(
-                                "https://avatars.githubusercontent.com/u/107133642?v=4"),
-                            radius: 12,
-                          ),
-                          Gaps.h4,
-                          const Expanded(
-                            child: Text(
-                              "Ozzy Osbourne & Black Sabbath",
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          Gaps.h4,
-                          FaIcon(
-                            FontAwesomeIcons.heart,
-                            size: Sizes.size16,
+                      Gaps.v8,
+                      if (constraints.maxWidth < 200 ||
+                          constraints.maxWidth > 250)
+                        DefaultTextStyle(
+                          style: TextStyle(
                             color: Colors.grey.shade600,
+                            fontWeight: FontWeight.w600,
                           ),
-                          Gaps.h2,
-                          const Text(
-                            "2.5M",
+                          child: Row(
+                            children: [
+                              const CircleAvatar(
+                                backgroundImage: NetworkImage(
+                                    "https://avatars.githubusercontent.com/u/107133642?v=4"),
+                                radius: 12,
+                              ),
+                              Gaps.h4,
+                              const Expanded(
+                                child: Text(
+                                  "Ozzy Osbourne & Black Sabbath",
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              Gaps.h4,
+                              FaIcon(
+                                FontAwesomeIcons.heart,
+                                size: Sizes.size16,
+                                color: Colors.grey.shade600,
+                              ),
+                              Gaps.h2,
+                              const Text(
+                                "2.5M",
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    ),
-                  ],
+                        ),
+                    ],
+                  ),
                 ),
               ),
               for (var tab in tabs.skip(1))
