@@ -5,6 +5,7 @@ import 'package:tictok_clone/constants/sizes.dart';
 import 'package:tictok_clone/features/auth/common/auth_button.dart';
 import 'package:tictok_clone/features/auth/user_name_screen.dart';
 import 'package:tictok_clone/features/auth/login_screen.dart';
+import 'package:tictok_clone/utils.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -49,11 +50,13 @@ class SignUpScreen extends StatelessWidget {
                     ),
                   ),
                   Gaps.v20,
-                  const Text(
+                  Text(
                     "크리에이터님! 세상을 놀라게 할 준비가 되셨나요?",
                     style: TextStyle(
                       fontSize: Sizes.size14,
-                      color: Colors.black45,
+                      color: isDarkMode(context)
+                          ? Colors.grey.shade300
+                          : Colors.black45,
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -106,7 +109,9 @@ class SignUpScreen extends StatelessWidget {
             ),
           ),
           bottomNavigationBar: BottomAppBar(
-            color: Colors.grey.shade50,
+            color: isDarkMode(context)
+                ? Colors.grey.shade900
+                : Colors.grey.shade50,
             elevation: 2,
             child: Padding(
               padding: const EdgeInsets.symmetric(
