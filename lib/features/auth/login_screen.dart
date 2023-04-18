@@ -4,6 +4,7 @@ import 'package:tictok_clone/constants/gaps.dart';
 import 'package:tictok_clone/constants/sizes.dart';
 import 'package:tictok_clone/features/auth/common/auth_button.dart';
 import 'package:tictok_clone/features/auth/login_form_screen.dart';
+import 'package:tictok_clone/utils.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -32,11 +33,14 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             children: [
               Gaps.v80,
-              const Text(
-                "TikTok 로그인",
-                style: TextStyle(
-                  fontSize: Sizes.size24,
-                  fontWeight: FontWeight.w700,
+              const Opacity(
+                opacity: 0.7,
+                child: Text(
+                  "TikTok 로그인",
+                  style: TextStyle(
+                    fontSize: Sizes.size24,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
               Gaps.v20,
@@ -44,7 +48,6 @@ class LoginScreen extends StatelessWidget {
                 "컨텐츠를 관리하기 위해서는 로그인을 해주셔야 해요.",
                 style: TextStyle(
                   fontSize: Sizes.size14,
-                  color: Colors.black45,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -70,7 +73,7 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.grey.shade50,
+        color: isDarkMode(context) ? null : Colors.grey.shade50,
         elevation: 2,
         child: Padding(
           padding: const EdgeInsets.symmetric(

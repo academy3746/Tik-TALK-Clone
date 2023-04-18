@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:tictok_clone/constants/gaps.dart';
 import 'package:tictok_clone/constants/sizes.dart';
 import 'package:tictok_clone/features/main_navigation/main_navigation_screen.dart';
+import 'package:tictok_clone/utils.dart';
 
 enum Direction {
   right,
@@ -118,6 +119,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
           ),
         ),
         bottomNavigationBar: BottomAppBar(
+          color: isDarkMode(context) ? Colors.black : Colors.white,
           child: Padding(
             padding: const EdgeInsets.symmetric(
               vertical: Sizes.size24,
@@ -131,12 +133,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
               child: CupertinoButton(
                 color: Theme.of(context).primaryColor,
                 onPressed: _onEnterAppTap,
-                child: const Text(
-                  "시작해봅시다!",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
+                child: const Text("시작해봅시다!"),
               ),
             ),
           ),
