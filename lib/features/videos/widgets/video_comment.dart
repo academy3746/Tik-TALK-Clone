@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tictok_clone/constants/gaps.dart';
 import 'package:tictok_clone/constants/sizes.dart';
+import 'package:tictok_clone/utils.dart';
 
 class VideoComments extends StatefulWidget {
   const VideoComments({Key? key}) : super(key: key);
@@ -35,6 +36,7 @@ class _VideoCommentsState extends State<VideoComments> {
   Widget build(BuildContext context) {
     // BottomSheet의 크기를 조절하고 싶거든...
     final size = MediaQuery.of(context).size;
+    final dark = isDarkMode(context);
     return Container(
       height: size.height * 0.65,
       clipBehavior: Clip.hardEdge,
@@ -44,9 +46,9 @@ class _VideoCommentsState extends State<VideoComments> {
         ),
       ),
       child: Scaffold(
-        backgroundColor: Colors.grey.shade50,
+        backgroundColor: dark ? null : Colors.grey.shade50,
         appBar: AppBar(
-          backgroundColor: Colors.grey.shade50,
+          backgroundColor: dark ? null : Colors.grey.shade50,
           automaticallyImplyLeading: false,
           title: const Text("22,796개"),
           actions: [
@@ -78,8 +80,7 @@ class _VideoCommentsState extends State<VideoComments> {
                     children: [
                       CircleAvatar(
                         radius: 18,
-                        foregroundColor: Colors.white,
-                        backgroundColor: Colors.grey.shade500,
+                        backgroundColor: dark ? Colors.grey.shade500 : null,
                         foregroundImage: const NetworkImage(
                           "https://avatars.githubusercontent.com/u/107133642?v=4",
                         ),
@@ -122,7 +123,8 @@ class _VideoCommentsState extends State<VideoComments> {
                       ),
                     ],
                   ),
-                  separatorBuilder: (BuildContext context, int index) => Gaps.v20,
+                  separatorBuilder: (BuildContext context, int index) =>
+                      Gaps.v20,
                 ),
               ),
               // input 박스가 소프트 키보드에 의해 가려진다면 bottomNavigationBar를 사용해서는 안된다..!
@@ -130,7 +132,7 @@ class _VideoCommentsState extends State<VideoComments> {
                 bottom: 0,
                 width: size.width,
                 child: BottomAppBar(
-                  color: Colors.white,
+                  //color: Colors.white,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: Sizes.size16,
@@ -140,8 +142,8 @@ class _VideoCommentsState extends State<VideoComments> {
                       children: [
                         CircleAvatar(
                           radius: 18,
-                          foregroundColor: Colors.white,
-                          backgroundColor: Colors.grey.shade500,
+                          //foregroundColor: Colors.white,
+                          backgroundColor: dark ? Colors.grey.shade500 : null,
                           foregroundImage: const NetworkImage(
                             "https://avatars.githubusercontent.com/u/107133642?v=4",
                           ),
@@ -167,7 +169,9 @@ class _VideoCommentsState extends State<VideoComments> {
                                   borderSide: BorderSide.none,
                                 ),
                                 filled: true,
-                                fillColor: Colors.grey.shade100,
+                                fillColor: dark
+                                    ? Colors.grey.shade800
+                                    : Colors.grey.shade200,
                                 contentPadding: const EdgeInsets.symmetric(
                                   vertical: Sizes.size10,
                                   horizontal: Sizes.size12,
@@ -181,17 +185,23 @@ class _VideoCommentsState extends State<VideoComments> {
                                     children: [
                                       FaIcon(
                                         FontAwesomeIcons.at,
-                                        color: Colors.grey.shade900,
+                                        color: dark
+                                            ? Colors.grey.shade500
+                                            : Colors.grey.shade900,
                                       ),
                                       Gaps.h14,
                                       FaIcon(
                                         FontAwesomeIcons.gift,
-                                        color: Colors.grey.shade900,
+                                        color: dark
+                                            ? Colors.grey.shade500
+                                            : Colors.grey.shade900,
                                       ),
                                       Gaps.h14,
                                       FaIcon(
                                         FontAwesomeIcons.faceSmile,
-                                        color: Colors.grey.shade900,
+                                        color: dark
+                                            ? Colors.grey.shade500
+                                            : Colors.grey.shade900,
                                       ),
                                       Gaps.h14,
                                       if (_isWriting)
