@@ -45,7 +45,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: _selectedIndex == 0 ? Colors.black : Colors.white,
+      backgroundColor: _selectedIndex == 0 || dark ? Colors.black : Colors.white,
       body: Stack(
         children: [
           Offstage(
