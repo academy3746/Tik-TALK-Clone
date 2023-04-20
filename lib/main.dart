@@ -29,6 +29,7 @@ class TikTokApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       // Dark Mode in IOS Simulator: Shift + Command + a
       theme: ThemeData(
+        //useMaterial3: true,
         textTheme: Typography.blackMountainView,
         brightness: Brightness.light,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -37,9 +38,11 @@ class TikTokApp extends StatelessWidget {
         textSelectionTheme: const TextSelectionThemeData(
           cursorColor: Color(0xFFE9435A),
         ),
+        splashColor: Colors.transparent,
         appBarTheme: const AppBarTheme(
           foregroundColor: Colors.black,
           backgroundColor: Colors.white,
+          surfaceTintColor: Colors.white,
           elevation: 0,
           titleTextStyle: TextStyle(
             color: Colors.black,
@@ -60,12 +63,19 @@ class TikTokApp extends StatelessWidget {
         ),
       ),
       darkTheme: ThemeData(
+        //useMaterial3: true,
         textSelectionTheme: const TextSelectionThemeData(
           cursorColor: Color(0xFFE9435A),
         ),
         textTheme: Typography.whiteMountainView,
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.grey.shade900,
+          surfaceTintColor: Colors.grey.shade900,
+          titleTextStyle: const TextStyle(
+            color: Colors.white,
+            fontSize: Sizes.size20 - Sizes.size2,
+            fontWeight: FontWeight.w600,
+          ),
         ),
         bottomAppBarTheme: BottomAppBarTheme(
           color: Colors.grey.shade900,
