@@ -11,13 +11,13 @@ class SignUpScreen extends StatelessWidget {
   const SignUpScreen({Key? key}) : super(key: key);
 
   // 메서드명에 언더바를 붙여주는 것은 Java Language에서 Private을 선언하는 것과 같음
-
-  void _onLoginTap(BuildContext context) {
-    Navigator.of(context).push(
+  void _onLoginTap(BuildContext context) async {
+    final res = await Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => const LoginScreen(),
       ),
     );
+    print(res);
   }
 
   void _onEmailTap(BuildContext context) {
