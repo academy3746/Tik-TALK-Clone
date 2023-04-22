@@ -16,9 +16,10 @@ class VideoRecordingScreen extends StatefulWidget {
 class _VideoRecordingScreenState extends State<VideoRecordingScreen> {
   // Flag here
   bool _hasPermission = false;
+  bool _selfMode = false;
   bool _permissionDenied = false;
 
-  late final CameraController _cameraController;
+  late CameraController _cameraController;
 
   Future<void> initCamera() async {
     final camera = await availableCameras();
@@ -29,7 +30,7 @@ class _VideoRecordingScreenState extends State<VideoRecordingScreen> {
     }
 
     _cameraController = CameraController(
-      camera[0],
+      camera[_selfMode ? 1 : 0],
       ResolutionPreset.ultraHigh,
     );
 
@@ -54,6 +55,12 @@ class _VideoRecordingScreenState extends State<VideoRecordingScreen> {
     setState(() {});
   }
 
+  Future<void> _toggleSelfMode() async {
+    _selfMode = !_selfMode;
+    await initCamera();
+    setState(() {});
+  }
+
   @override
   void initState() {
     super.initState();
@@ -68,13 +75,25 @@ class _VideoRecordingScreenState extends State<VideoRecordingScreen> {
         width: MediaQuery.of(context).size.width,
         child: _permissionDenied
             ? const CameraStatus(
-                status: "사용자에 의해 카메라 접근권한이 거부되었습니다.\n 설정 > 어플리케이션 > 권한 > 카메라 > 허용")
+                status:
+                    "사용자에 의해 카메라 접근권한이 거부되었습니다.\n 설정 > 어플리케이션 > 권한 > 카메라 > 허용")
             : !_hasPermission || !_cameraController.value.isInitialized
                 ? const CameraStatus(status: "초기화가 진행중입니다.")
                 : Stack(
                     alignment: Alignment.center,
                     children: [
                       CameraPreview(_cameraController),
+                      Positioned(
+                        top: Sizes.size20,
+                        left: Sizes.size20,
+                        child: IconButton(
+                          color: Colors.white,
+                          onPressed: _toggleSelfMode,
+                          icon: const Icon(
+                            Icons.cameraswitch,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
       ),
