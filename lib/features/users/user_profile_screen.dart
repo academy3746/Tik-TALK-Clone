@@ -6,7 +6,14 @@ import 'package:tictok_clone/features/settings/settings_screen.dart';
 import 'package:tictok_clone/features/users/widgets/persistent_tab_bar.dart';
 
 class UserProfileScreen extends StatefulWidget {
-  const UserProfileScreen({Key? key}) : super(key: key);
+  static String router = "/profile";
+
+  final String username;
+
+  const UserProfileScreen({
+    Key? key,
+    required this.username,
+  }) : super(key: key);
 
   @override
   State<UserProfileScreen> createState() => _UserProfileScreenState();
@@ -29,10 +36,11 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         child: DefaultTabController(
           length: 2,
           child: NestedScrollView(
-            headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            headerSliverBuilder:
+                (BuildContext context, bool innerBoxIsScrolled) {
               return [
                 SliverAppBar(
-                  title: const Text("DIO"),
+                  title: Text(widget.username),
                   actions: [
                     IconButton(
                       onPressed: _onGearPressed,
@@ -57,9 +65,9 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text(
-                            "@DIO",
-                            style: TextStyle(
+                          Text(
+                            "@${widget.username}",
+                            style: const TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: Sizes.size18,
                             ),

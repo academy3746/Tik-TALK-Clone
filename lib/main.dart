@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tictok_clone/constants/sizes.dart';
-import 'package:tictok_clone/features/auth/email_screen.dart';
-import 'package:tictok_clone/features/auth/login_screen.dart';
-import 'package:tictok_clone/features/auth/sign_up_screen.dart';
-import 'package:tictok_clone/features/auth/user_name_screen.dart';
 import 'package:tictok_clone/router.dart';
 
 void main() async {
