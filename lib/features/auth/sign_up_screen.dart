@@ -9,7 +9,9 @@ import 'package:tictok_clone/features/auth/user_name_screen.dart';
 import 'package:tictok_clone/utils.dart';
 
 class SignUpScreen extends StatelessWidget {
-  static String routeName = "/";
+  //static String routeName = "/";
+  static String routeURL = "/";
+  static const routeName = "signUp";
 
   const SignUpScreen({Key? key}) : super(key: key);
 
@@ -20,7 +22,7 @@ class SignUpScreen extends StatelessWidget {
 
   void _onEmailTap(BuildContext context) {
     // Method named go: 뒤로가기 동작 block
-    context.push(UserNameScreen.routeName);
+    context.pushNamed(UserNameScreen.routeName);
     // context.push("/users/:DIO?show=likes");
   }
 
