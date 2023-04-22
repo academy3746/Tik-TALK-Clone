@@ -16,7 +16,11 @@ class VideoRecordingScreen extends StatefulWidget {
 class _VideoRecordingScreenState extends State<VideoRecordingScreen> {
   // Flag here
   bool _hasPermission = false;
+
   bool _selfMode = false;
+
+  late FlashMode _flashMode;
+
   bool _permissionDenied = false;
 
   late CameraController _cameraController;
@@ -35,6 +39,8 @@ class _VideoRecordingScreenState extends State<VideoRecordingScreen> {
     );
 
     await _cameraController.initialize();
+
+    _flashMode = _cameraController.value.flashMode;
   }
 
   Future<void> initPermission() async {
@@ -61,6 +67,12 @@ class _VideoRecordingScreenState extends State<VideoRecordingScreen> {
     setState(() {});
   }
 
+  Future<void> _setFlashMode(FlashMode newFlashMode) async {
+    await _cameraController.setFlashMode(newFlashMode);
+    _flashMode = newFlashMode;
+    setState(() {});
+  }
+
   @override
   void initState() {
     super.initState();
@@ -76,7 +88,7 @@ class _VideoRecordingScreenState extends State<VideoRecordingScreen> {
         child: _permissionDenied
             ? const CameraStatus(
                 status:
-                    "사용자에 의해 카메라 접근권한이 거부되었습니다.\n 설정 > 어플리케이션 > 권한 > 카메라 > 허용")
+                    "사용자에 의해 카메라 접근권한이 거부되었습니다.\n 어플리케이션 설정에서 직접 권한을 수락해주세요.")
             : !_hasPermission || !_cameraController.value.isInitialized
                 ? const CameraStatus(status: "초기화가 진행중입니다.")
                 : Stack(
@@ -85,13 +97,49 @@ class _VideoRecordingScreenState extends State<VideoRecordingScreen> {
                       CameraPreview(_cameraController),
                       Positioned(
                         top: Sizes.size20,
-                        left: Sizes.size20,
-                        child: IconButton(
-                          color: Colors.white,
-                          onPressed: _toggleSelfMode,
-                          icon: const Icon(
-                            Icons.cameraswitch,
-                          ),
+                        right: Sizes.size20,
+                        child: Column(
+                          children: [
+                            IconButton(
+                              color: Colors.white,
+                              onPressed: _toggleSelfMode,
+                              icon: const Icon(
+                                Icons.cameraswitch,
+                              ),
+                            ),
+                            Gaps.v10,
+                            IconButton(
+                              color: _flashMode == FlashMode.off ? Colors.amber.shade200 : Colors.white,
+                              onPressed: () => _setFlashMode(FlashMode.off),
+                              icon: const Icon(
+                                Icons.flash_off_rounded,
+                              ),
+                            ),
+                            Gaps.v10,
+                            IconButton(
+                              color: _flashMode == FlashMode.always ? Colors.amber.shade200 : Colors.white,
+                              onPressed: () => _setFlashMode(FlashMode.always),
+                              icon: const Icon(
+                                Icons.flash_on_rounded,
+                              ),
+                            ),
+                            Gaps.v10,
+                            IconButton(
+                              color: _flashMode == FlashMode.auto ? Colors.amber.shade200 : Colors.white,
+                              onPressed: () => _setFlashMode(FlashMode.auto),
+                              icon: const Icon(
+                                Icons.flash_auto_rounded,
+                              ),
+                            ),
+                            Gaps.v10,
+                            IconButton(
+                              color: _flashMode == FlashMode.torch ? Colors.amber.shade200 : Colors.white,
+                              onPressed: () => _setFlashMode(FlashMode.torch),
+                              icon: const Icon(
+                                Icons.flashlight_on_rounded,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
