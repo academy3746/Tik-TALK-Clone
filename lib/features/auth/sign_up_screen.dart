@@ -8,57 +8,15 @@ import 'package:tictok_clone/features/auth/user_name_screen.dart';
 import 'package:tictok_clone/utils.dart';
 
 class SignUpScreen extends StatelessWidget {
-  static String routeName = "/";
+  static String routeName = "signUp";
   const SignUpScreen({Key? key}) : super(key: key);
 
   // 메서드명에 언더바를 붙여주는 것은 Java Language에서 Private을 선언하는 것과 같음
   void _onLoginTap(BuildContext context) async {
-    /*
-    final res = await Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const LoginScreen(),
-      ),
-    );
-    print(res);
-    */
-
     Navigator.of(context).pushNamed(LoginScreen.routeName);
   }
 
   void _onEmailTap(BuildContext context) {
-    /*
-    Navigator.of(context).push(
-      /*
-      MaterialPageRoute(
-        builder: (context) => const UserNameScreen(),
-      ),
-      */
-      PageRouteBuilder(
-        transitionDuration: const Duration(
-          milliseconds: 500,
-        ),
-        reverseTransitionDuration: const Duration(
-          milliseconds: 500,
-        ),
-        pageBuilder: (BuildContext context, Animation<double> animation,
-                Animation<double> secondaryAnimation) =>
-            const UserNameScreen(),
-        transitionsBuilder: (context, animation, secondaryAnimation, child) {
-          final offsetAnimation = Tween(
-            begin: const Offset(1, 0),
-            end: Offset.zero,
-          ).animate(animation);
-          return SlideTransition(
-            position: offsetAnimation,
-            child: FadeTransition(
-              opacity: animation,
-              child: child,
-            ),
-          );
-        }
-      ),
-    );
-    */
     Navigator.of(context).pushNamed(UserNameScreen.routeName);
   }
 

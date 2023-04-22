@@ -5,6 +5,7 @@ import 'package:tictok_clone/features/auth/email_screen.dart';
 import 'package:tictok_clone/features/auth/login_screen.dart';
 import 'package:tictok_clone/features/auth/sign_up_screen.dart';
 import 'package:tictok_clone/features/auth/user_name_screen.dart';
+import 'package:tictok_clone/features/videos/widgets/video_recording_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -89,12 +90,14 @@ class TikTokApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       //home: const SignUpScreen(),
-      initialRoute: SignUpScreen.routeName,
+      //initialRoute: SignUpScreen.routeName,
+      initialRoute: VideoRecordingScreen.routeName,
       routes: {
         SignUpScreen.routeName: (context) => const SignUpScreen(),
         UserNameScreen.routeName: (context) => const UserNameScreen(),
         LoginScreen.routeName: (context) => const LoginScreen(),
         EmailScreen.routeName: (context) => const EmailScreen(),
+        VideoRecordingScreen.routeName: (context) => const VideoRecordingScreen(),
       },
     );
   }
