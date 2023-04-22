@@ -5,6 +5,7 @@ import 'package:tictok_clone/features/auth/email_screen.dart';
 import 'package:tictok_clone/features/auth/login_screen.dart';
 import 'package:tictok_clone/features/auth/sign_up_screen.dart';
 import 'package:tictok_clone/features/auth/user_name_screen.dart';
+import 'package:tictok_clone/router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +28,8 @@ class TikTokApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: router,
       title: 'Tik-TALK! Clone',
       themeMode: ThemeMode.system,
       // Dark Mode in IOS Simulator: Shift + Command + a
@@ -88,14 +90,6 @@ class TikTokApp extends StatelessWidget {
         primaryColor: const Color(0xFFE9435A),
       ),
       debugShowCheckedModeBanner: false,
-      //home: const SignUpScreen(),
-      initialRoute: SignUpScreen.routeName,
-      routes: {
-        SignUpScreen.routeName: (context) => const SignUpScreen(),
-        UserNameScreen.routeName: (context) => const UserNameScreen(),
-        LoginScreen.routeName: (context) => const LoginScreen(),
-        EmailScreen.routeName: (context) => EmailScreen(),
-      },
     );
   }
 }

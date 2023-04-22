@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tictok_clone/constants/gaps.dart';
 import 'package:tictok_clone/constants/sizes.dart';
 import 'package:tictok_clone/features/auth/common/auth_button.dart';
@@ -9,57 +10,17 @@ import 'package:tictok_clone/utils.dart';
 
 class SignUpScreen extends StatelessWidget {
   static String routeName = "/";
+
   const SignUpScreen({Key? key}) : super(key: key);
 
   // 메서드명에 언더바를 붙여주는 것은 Java Language에서 Private을 선언하는 것과 같음
   void _onLoginTap(BuildContext context) async {
-    /*
-    final res = await Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const LoginScreen(),
-      ),
-    );
-    print(res);
-    */
-
-    Navigator.of(context).pushNamed(LoginScreen.routeName);
+    context.push(LoginScreen.routeName);
   }
 
   void _onEmailTap(BuildContext context) {
-    /*
-    Navigator.of(context).push(
-      /*
-      MaterialPageRoute(
-        builder: (context) => const UserNameScreen(),
-      ),
-      */
-      PageRouteBuilder(
-        transitionDuration: const Duration(
-          milliseconds: 500,
-        ),
-        reverseTransitionDuration: const Duration(
-          milliseconds: 500,
-        ),
-        pageBuilder: (BuildContext context, Animation<double> animation,
-                Animation<double> secondaryAnimation) =>
-            const UserNameScreen(),
-        transitionsBuilder: (context, animation, secondaryAnimation, child) {
-          final offsetAnimation = Tween(
-            begin: const Offset(1, 0),
-            end: Offset.zero,
-          ).animate(animation);
-          return SlideTransition(
-            position: offsetAnimation,
-            child: FadeTransition(
-              opacity: animation,
-              child: child,
-            ),
-          );
-        }
-      ),
-    );
-    */
-    Navigator.of(context).pushNamed(UserNameScreen.routeName);
+    // Method named go: 뒤로가기 동작 block
+    context.push(UserNameScreen.routeName);
   }
 
   @override
