@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tictok_clone/constants/gaps.dart';
 import 'package:tictok_clone/constants/sizes.dart';
 import 'package:tictok_clone/features/auth/common/form_button.dart';
@@ -41,20 +42,18 @@ class _UserNameScreenState extends State<UserNameScreen> {
   void _onNextTap() {
     if (_userName.isEmpty) return;
     /*
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => EmailScreen(
-          username: _userName,
-        ),
-      ),
-    );
-    */
-
     Navigator.pushNamed(
       context,
       EmailScreen.routeName,
       arguments: EmailScreenArgs(userName: _userName),
+    );
+    */
+
+    context.push(
+      EmailScreen.routeName,
+      extra: EmailScreenArgs(
+        userName: _userName,
+      ),
     );
   }
 

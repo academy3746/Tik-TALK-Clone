@@ -21,6 +21,7 @@ class SignUpScreen extends StatelessWidget {
   void _onEmailTap(BuildContext context) {
     // Method named go: 뒤로가기 동작 block
     context.push(UserNameScreen.routeName);
+    // context.push("/users/:DIO?show=likes");
   }
 
   @override

@@ -23,15 +23,22 @@ final router = GoRouter(
     ),
     GoRoute(
       path: EmailScreen.routeName,
-      builder: (context, state) => const EmailScreen(),
+      builder: (context, state) {
+        final args = state.extra as EmailScreenArgs;
+        return EmailScreen(username: args.userName);
+      },
     ),
+    // For Web Service
     GoRoute(
-      //path: UserProfileScreen.router,
       path: "/users/:username",
       builder: (context, state) {
         final username = state.params['username'];
+        final tab = state.queryParams["show"];
 
-        return UserProfileScreen(username: username!,);
+        return UserProfileScreen(
+          username: username!,
+          tab: tab!,
+        );
       },
     ),
   ],
