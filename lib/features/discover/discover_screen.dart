@@ -142,9 +142,9 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                         "I was born to love you with every single day of my life.",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: Sizes.size16 + Sizes.size2,
+                          fontSize: Sizes.size16,
                         ),
-                        maxLines: 2,
+                        maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
                       Gaps.v8,

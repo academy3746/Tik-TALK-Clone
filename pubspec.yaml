@@ -40,6 +40,8 @@ dependencies:
   visibility_detector: 0.3.3
   google_fonts: 4.0.1
   flex_color_scheme: ^7.0.3
+  camera: ^0.10.4
+  permission_handler: ^10.2.0
 
 dev_dependencies:
   flutter_test:
