@@ -30,12 +30,10 @@ final router = GoRouter(
         ),
       ],
     ),
-    /*
     GoRoute(
       path: LoginScreen.routeName,
       builder: (context, state) => const LoginScreen(),
     ),
-    */
     /*
     GoRoute(
         path: UserNameScreen.routeName,
