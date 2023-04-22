@@ -5,7 +5,17 @@ import 'package:tictok_clone/constants/sizes.dart';
 import 'package:tictok_clone/features/auth/common/form_button.dart';
 import 'package:tictok_clone/features/auth/password_screen.dart';
 
+class EmailScreenArgs {
+  final String userName;
+
+  EmailScreenArgs({required this.userName});
+}
+
 class EmailScreen extends StatefulWidget {
+  static String routeName = "/email";
+
+  //final String username;
+
   const EmailScreen({Key? key}) : super(key: key);
 
   @override
@@ -64,6 +74,9 @@ class _EmailScreenState extends State<EmailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)!.settings.arguments as EmailScreenArgs;
+    //print(args.userName);
+
     return GestureDetector(
       onTap: _onScaffoldTap,
       child: Scaffold(
@@ -78,9 +91,9 @@ class _EmailScreenState extends State<EmailScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Gaps.v40,
-              const Text(
-                "이메일 주소",
-                style: TextStyle(
+              Text(
+                "${args.userName}님의 이메일주소",
+                style: const TextStyle(
                   fontSize: Sizes.size24,
                   fontWeight: FontWeight.w700,
                 ),
