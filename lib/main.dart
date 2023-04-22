@@ -94,7 +94,7 @@ class TikTokApp extends StatelessWidget {
         SignUpScreen.routeName: (context) => const SignUpScreen(),
         UserNameScreen.routeName: (context) => const UserNameScreen(),
         LoginScreen.routeName: (context) => const LoginScreen(),
-        EmailScreen.routeName: (context) => EmailScreen(),
+        EmailScreen.routeName: (context) => const EmailScreen(),
       },
     );
   }
