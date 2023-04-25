@@ -5,7 +5,7 @@ import 'package:tictok_clone/features/auth/email_screen.dart';
 import 'package:tictok_clone/features/auth/login_screen.dart';
 import 'package:tictok_clone/features/auth/sign_up_screen.dart';
 import 'package:tictok_clone/features/auth/user_name_screen.dart';
-import 'package:tictok_clone/features/videos/widgets/video_recording_screen.dart';
+import 'package:tictok_clone/features/videos/video_recording_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
